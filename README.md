@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Laskuri</title>
+</head>
+<body>
+
+    <h1>Laskuri</h1>
+
+    <input type="text" id="lasku" placeholder="Kirjoita lasku ja paina enter">
+
+    <p id="vastaus"></p>
+
+    <script>
+        const lasku = document.getElementById("lasku");
+        const vastaus = document.getElementById("vastaus");
+
+        lasku.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                vastaus.textContent = "Vastaus: " + eval(lasku.value);
+            }
+        });
+    </script>
+
+</body>
+</html>
