@@ -1,70 +1,180 @@
+
 <!DOCTYPE html>
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laskuri</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: yellow;
+            font-family: Arial, sans-serif;
+            color: black;
+        }
+
+        .toivoton {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            animation: pyori 3s linear infinite;
+            transform-origin: center;
+        }
+
+        @keyframes pyori {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .laskuri {
+            width: 320px;
+            padding: 25px;
+            background: #fff59d;
+            border: 3px solid black;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 2px solid black;
+            background: white;
+            font-size: 18px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            border: 2px solid black;
+            background: black;
+            color: yellow;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        #vastaus {
+            overflow-wrap: anywhere;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h1>Laskuri</h1>
-    <form id="lomake">
-        <input id="lasku" type="text" placeholder="Kirjoita lasku" required>
-        <button type="submit">Laske</button>
-    </form>
-    <p id="vastaus"></p>
+    <div class="toivoton">Toivoton xD</div>
+
+    <main class="laskuri">
+        <h1>Laskuri</h1>
+        <form id="lomake">
+            <input id="lasku" type="text" placeholder="Esim. 5545:545" autocomplete="off" required>
+            <button type="submit">Laske</button>
+        </form>
+        <p id="vastaus"></p>
+    </main>
+
     <script>
         const lomake = document.getElementById("lomake");
         const lasku = document.getElementById("lasku");
         const vastaus = document.getElementById("vastaus");
 
         function laske(s) {
-            const t = s.replace(/:/g, "/").match(/\d+(?:\.\d+)?|[()+\-*/^]/g);
-            if (!t || t.join("") !== s.replace(/\s/g, "")) throw Error("Virheellinen lasku");
+            s = s.replace(/:/g, "/").replace(/\s/g, "");
+            const t = s.match(/\d+(?:\.\d+)?|[()+\-*/^]/g);
+
+            if (!t || t.join("") !== s) {
+                throw Error("Virheellinen lasku");
+            }
+
             let i = 0;
+
             function atom() {
                 const x = t[i++];
+
                 if (x === "+") return atom();
                 if (x === "-") return -atom();
+
                 if (x === "(") {
                     const n = summa();
                     if (t[i++] !== ")") throw Error("Sulkeet eivät täsmää");
                     return n;
                 }
-                if (!x || !/^\d+(?:\.\d+)?$/.test(x)) throw Error("Virheellinen lasku");
+
+                if (!x || !/^\d+(?:\.\d+)?$/.test(x)) {
+                    throw Error("Virheellinen lasku");
+                }
+
                 return Number(x);
             }
+
             function potenssi() {
                 const a = atom();
                 return t[i] === "^" ? (i++, a ** potenssi()) : a;
             }
+
             function tulo() {
                 let a = potenssi();
+
                 while (t[i] === "*" || t[i] === "/") {
                     const op = t[i++];
                     const b = potenssi();
-                    if (op === "/" && b === 0) throw Error("Nollalla ei voi jakaa :DDDD");
+
+                    if (op === "/" && b === 0) {
+                        throw Error("Nollalla ei voi jakaa");
+                    }
+
                     a = op === "*" ? a * b : a / b;
                 }
+
                 return a;
             }
+
             function summa() {
                 let a = tulo();
+
                 while (t[i] === "+" || t[i] === "-") {
                     const op = t[i++];
                     const b = tulo();
                     a = op === "+" ? a + b : a - b;
                 }
+
                 return a;
             }
+
             const n = summa();
-            if (i !== t.length || !Number.isFinite(n)) throw Error("Virheellinen lasku");
+
+            if (i !== t.length || !Number.isFinite(n)) {
+                throw Error("Virheellinen lasku");
+            }
+
             return n;
         }
 
-        lomake.addEventListener("submit", e => {
+        lomake.addEventListener("submit", function(e) {
             e.preventDefault();
+
             try {
-                vastaus.textContent = "Vastaus: " + laske(lasku.value);
+                const tulos = laske(lasku.value);
+                vastaus.textContent = "Vastaus: " +
+                    tulos.toLocaleString("fi-FI", { maximumFractionDigits: 10 });
             } catch (e) {
                 vastaus.textContent = e.message;
             }
