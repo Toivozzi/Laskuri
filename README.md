@@ -31,7 +31,5 @@ Esimerkkejä:
 
 ## GitHub Pages homma
 
-Laskuri toimii myös selaimessa https:
+Laskuri toimii myös selaimessa [https:](https://toivozzi.github.io/laskuri/)
 ---
-
-Tehty huvin vuoksi.
