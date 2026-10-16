@@ -1,27 +1,37 @@
-<!DOCTYPE html>
-<html lang="fi">
-<head>
-    <meta charset="UTF-8">
-    <title>Laskuri</title>
-</head>
-<body>
+# Laskuri
 
-    <h1>Laskuri</h1>
+Yksinkertainen laskuri, joka laskee matemaattisia laskuja.
 
-    <input type="text" id="lasku" placeholder="Kirjoita lasku ja paina enter">
+## Ominaisuudet
 
-    <p id="vastaus"></p>
+- Yhteenlasku (`+`)
+- Vähennyslasku (`-`)
+- Kertolasku (`*`)
+- Jakolasku (`/` tai `:`)
+- Potenssit (`^`)
+- Sulkeet (`()`)
+- Tuloksen pyöristäminen valitulla desimaalien määrällä
 
-    <script>
-        const lasku = document.getElementById("lasku");
-        const vastaus = document.getElementById("vastaus");
+## Käyttö
 
-        lasku.addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
-                vastaus.textContent = "Vastaus: " + eval(lasku.value);
-            }
-        });
-    </script>
+1. Avaa laskurin nettisivu.
+2. Kirjoita lasku kenttään.
+3. Paina **Laske**.
+4. Valitse haluamasi desimaalien määrä pyöristystä varten.
 
-</body>
-</html>
+Esimerkkejä:
+
+```text
+5+5
+10*4
+5545:545
+2^8
+(5+3)*2
+```
+
+## GitHub Pages homma
+
+Laskuri toimii myös selaimessa https:
+---
+
+Tehty huvin vuoksi.
