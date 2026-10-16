@@ -11,18 +11,49 @@
     <div class="toivo">Toivo xD</div>
 
     <main class="laskuri">
-        <h1>Laskuri 1.0</h1>
+        <h1>Laskuri</h1>
         <form id="lomake">
-            <input id="lasku" type="text" placeholder="Esim. 6:7" autocomplete="off" required>
+            <input id="lasku" type="text" placeholder="Esim. 5545:545" autocomplete="off" required>
             <button type="submit">Laske</button>
         </form>
         <p id="vastaus"></p>
+
+        <div id="pyoristys" hidden>
+            <label for="tarkkuus">Pyöristettynä:</label>
+            <select id="tarkkuus">
+                <option value="0">0 desimaalia</option>
+                <option value="1">1 desimaali</option>
+                <option value="2" selected>2 desimaalia</option>
+                <option value="3">3 desimaalia</option>
+                <option value="4">4 desimaalia</option>
+                <option value="5">5 desimaalia</option>
+                <option value="6">6 desimaalia</option>
+                <option value="7">7 desimaalia</option>
+                <option value="8">8 desimaalia</option>
+                <option value="9">9 desimaalia</option>
+                <option value="10">10 desimaalia</option>
+            </select>
+            <p id="pyoristetty"></p>
+        </div>
     </main>
 
     <script>
         const lomake = document.getElementById("lomake");
         const lasku = document.getElementById("lasku");
         const vastaus = document.getElementById("vastaus");
+        const pyoristys = document.getElementById("pyoristys");
+        const tarkkuus = document.getElementById("tarkkuus");
+        const pyoristetty = document.getElementById("pyoristetty");
+
+        let tulos = null;
+
+        function naytaPyoristetty() {
+            const desimaalit = Number(tarkkuus.value);
+            pyoristetty.textContent = tulos.toLocaleString("fi-FI", {
+                minimumFractionDigits: desimaalit,
+                maximumFractionDigits: desimaalit
+            });
+        }
 
         function laske(s) {
             s = s.replace(/:/g, "/").replace(/\s/g, "");
@@ -66,7 +97,7 @@
                     const b = potenssi();
 
                     if (op === "/" && b === 0) {
-                        throw Error("Et voi jakaa nollalla xD");
+                        throw Error("Nollalla ei voi jakaa");
                     }
 
                     a = op === "*" ? a * b : a / b;
@@ -100,13 +131,22 @@
             e.preventDefault();
 
             try {
-                const tulos = laske(lasku.value);
+                tulos = laske(lasku.value);
+
                 vastaus.textContent = "Vastaus: " +
-                    tulos.toLocaleString("fi-FI", { maximumFractionDigits: 10 });
+                    tulos.toLocaleString("fi-FI", {
+                        maximumFractionDigits: 10
+                    });
+
+                pyoristys.hidden = false;
+                naytaPyoristetty();
             } catch (e) {
                 vastaus.textContent = e.message;
+                pyoristys.hidden = true;
             }
         });
+
+        tarkkuus.addEventListener("change", naytaPyoristetty);
     </script>
 </body>
 </html>
