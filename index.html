@@ -18,7 +18,7 @@
         const vastaus = document.getElementById("vastaus");
 
         function laske(s) {
-            const t = s.match(/\d+(?:\.\d+)?|[()+\-*/^]/g);
+            const t = s.replace(/:/g, "/").match(/\d+(?:\.\d+)?|[()+\-*/^]/g);
             if (!t || t.join("") !== s.replace(/\s/g, "")) throw Error("Virheellinen lasku");
             let i = 0;
             function atom() {
