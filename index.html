@@ -2,26 +2,73 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laskuri</title>
 </head>
 <body>
-
     <h1>Laskuri</h1>
-
-    <input type="text" id="lasku" placeholder="Kirjoita lasku ja paina enter">
-
+    <form id="lomake">
+        <input id="lasku" type="text" placeholder="Kirjoita lasku" required>
+        <button type="submit">Laske</button>
+    </form>
     <p id="vastaus"></p>
-
     <script>
+        const lomake = document.getElementById("lomake");
         const lasku = document.getElementById("lasku");
         const vastaus = document.getElementById("vastaus");
 
-        lasku.addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
-                vastaus.textContent = "Vastaus: " + eval(lasku.value);
+        function laske(s) {
+            const t = s.match(/\d+(?:\.\d+)?|[()+\-*/^]/g);
+            if (!t || t.join("") !== s.replace(/\s/g, "")) throw Error("Virheellinen lasku");
+            let i = 0;
+            function atom() {
+                const x = t[i++];
+                if (x === "+") return atom();
+                if (x === "-") return -atom();
+                if (x === "(") {
+                    const n = summa();
+                    if (t[i++] !== ")") throw Error("Sulkeet eivät täsmää");
+                    return n;
+                }
+                if (!x || !/^\d+(?:\.\d+)?$/.test(x)) throw Error("Virheellinen lasku");
+                return Number(x);
+            }
+            function potenssi() {
+                const a = atom();
+                return t[i] === "^" ? (i++, a ** potenssi()) : a;
+            }
+            function tulo() {
+                let a = potenssi();
+                while (t[i] === "*" || t[i] === "/") {
+                    const op = t[i++];
+                    const b = potenssi();
+                    if (op === "/" && b === 0) throw Error("Nollalla ei voi jakaa :DDDD");
+                    a = op === "*" ? a * b : a / b;
+                }
+                return a;
+            }
+            function summa() {
+                let a = tulo();
+                while (t[i] === "+" || t[i] === "-") {
+                    const op = t[i++];
+                    const b = tulo();
+                    a = op === "+" ? a + b : a - b;
+                }
+                return a;
+            }
+            const n = summa();
+            if (i !== t.length || !Number.isFinite(n)) throw Error("Virheellinen lasku");
+            return n;
+        }
+
+        lomake.addEventListener("submit", e => {
+            e.preventDefault();
+            try {
+                vastaus.textContent = "Vastaus: " + laske(lasku.value);
+            } catch (e) {
+                vastaus.textContent = e.message;
             }
         });
     </script>
-
 </body>
 </html>
