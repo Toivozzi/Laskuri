@@ -39,8 +39,8 @@ Avaa laskurin nettisivu.
 
 Laskuri toimii myös selaimessa: [Laskuri](https://toivozzi.github.io/laskuri/)
 
-<div align="center">
-  <img src="./kissa.gif" width="400" alt="Beatboxaava kissa">
-</div>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Toivozzi/laskuri/main/kissa.gif" width="400" alt="Beatboxaava kissa">
+</p>
 
 ---
