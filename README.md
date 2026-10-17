@@ -32,5 +32,5 @@ Laskuri - Laske laskusi nopeasti ja vaivattomasti!
 
 ## GitHub Pages homma
 
-Laskuri toimii myös selaimessa [Nettisivu](https://toivozzi.github.io/laskuri/)
+Laskuri toimii myös selaimessa: [Laskuri](https://toivozzi.github.io/laskuri/)
 ---
