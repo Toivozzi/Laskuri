@@ -1,10 +1,8 @@
 # Laskuri - Laske laskusi nopeasti ja vaivattomasti!
-
 <p align="center">
   <img src="https://raw.githubusercontent.com/Toivozzi/laskuri/main/meow.gif" width="400" alt="Kissa">
 </p>
-
-<strong>Yksinkertainen laskuri, joka laskee matemaattisia laskuja.</strong>
+<strong>Yksinkertainen laskuri, joka laskee matemaattisia laskuja.<strong/>
 
 ## Ominaisuudet
 
