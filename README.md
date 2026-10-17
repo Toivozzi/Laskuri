@@ -28,8 +28,7 @@ Made with ☕ and 🐈 :DDDD
 ## Kuinka käytän Laskuria???
 Lataa source koodi tai käytä suoraan [Laskuri](https://toivozzi.github.io/laskuri/)
 ```text
-1. Avaa GitHub-repo
-   https://github.com/Toivozzi/laskuri
+1. Avaa GitHub-repo - https://github.com/Toivozzi/laskuri
 
 2. Paina Code -> Download ZIP
 
