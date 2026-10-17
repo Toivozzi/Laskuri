@@ -1,9 +1,7 @@
-# Laskuri
+# Laskuri - Laske laskusi nopeasti ja vaivattomasti!
 <p align="center">
   <img src="https://raw.githubusercontent.com/Toivozzi/laskuri/main/kissa.gif" width="400" alt="Beatboxaava kissa">
 </p>
-Laskuri - Laske laskusi nopeasti ja vaivattomasti!
-
 <strong>Yksinkertainen laskuri, joka laskee matemaattisia laskuja.<strong/>
 
 ## Ominaisuudet
