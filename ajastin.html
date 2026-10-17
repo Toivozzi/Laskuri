@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajastin - Laskuri 3.2.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="toivo">Laskuri</div>
+    <a class="takaisin" href="index.html">← Takaisin</a>
+
+    <main class="laskuri">
+        <h1>Ajastin</h1>
+
+        <label for="suunta">Ajastimen tyyppi</label>
+        <select id="suunta">
+            <option value="alas">Ajastin alaspäin</option>
+            <option value="ylos">Ajastin ylöspäin</option>
+        </select>
+
+        <div id="aika-asetus" class="aikavalinta">
+            <label for="minuutit">Minuutit</label>
+            <input id="minuutit" type="number" min="0" max="999" value="1">
+
+            <label for="sekunnit">Sekunnit</label>
+            <input id="sekunnit" type="number" min="0" max="59" value="0">
+        </div>
+
+        <div id="aika">01:00</div>
+
+        <div class="ajastin-napit">
+            <button id="kaynnista">Käynnistä :)</button>
+            <button id="pysayta">Pysäytä</button>
+            <button id="nollaa">Nollaa</button>
+        </div>
+
+        <p id="tila"></p>
+    </main>
+
+    <script>
+        const suunta = document.getElementById("suunta");
+        const minuutit = document.getElementById("minuutit");
+        const sekunnit = document.getElementById("sekunnit");
+        const aikaAsetus = document.getElementById("aika-asetus");
+        const aika = document.getElementById("aika");
+        const tila = document.getElementById("tila");
+
+        let nykyinenAika = 60;
+        let ajastin = null;
+        let aloitettu = false;
+
+        function asetettuAika() {
+            const m = Number(minuutit.value);
+            const s = Number(sekunnit.value);
+
+            if (
+                minuutit.value === "" ||
+                sekunnit.value === "" ||
+                !Number.isInteger(m) ||
+                !Number.isInteger(s) ||
+                m < 0 || m > 999 ||
+                s < 0 || s > 59
+            ) {
+                throw Error("Tarkistappa minuutit ja sekunnit.");
+            }
+
+            return m * 60 + s;
+        }
+
+        function paivitaNaytto() {
+            const m = Math.floor(nykyinenAika / 60);
+            const s = nykyinenAika % 60;
+
+            aika.textContent =
+                String(m).padStart(2, "0") + ":" +
+                String(s).padStart(2, "0");
+        }
+
+        function pysaytaAjastin() {
+            if (ajastin !== null) {
+                clearInterval(ajastin);
+                ajastin = null;
+            }
+        }
+
+        function nollaaAjastin() {
+            pysaytaAjastin();
+            aloitettu = true;
+            tila.textContent = "";
+
+            if (suunta.value === "alas") {
+                try {
+                    nykyinenAika = asetettuAika();
+                } catch (e) {
+                    tila.textContent = e.message;
+                    nykyinenAika = 0;
+                }
+            } else {
+                nykyinenAika = 0;
+            }
+
+            paivitaNaytto();
+        }
+
+        suunta.addEventListener("change", function() {
+            pysaytaAjastin();
+            aloitettu = false;
+            aikaAsetus.hidden = suunta.value === "ylos";
+            nollaaAjastin();
+            aloitettu = false;
+        });
+
+        document.getElementById("kaynnista").addEventListener("click", function() {
+            if (ajastin !== null) return;
+
+            if (!aloitettu) {
+                if (suunta.value === "alas") {
+                    try {
+                        nykyinenAika = asetettuAika();
+                    } catch (e) {
+                        tila.textContent = e.message;
+                        return;
+                    }
+
+                    if (nykyinenAika <= 0) {
+                        tila.textContent = "Aseta ensin aika.";
+                        paivitaNaytto();
+                        return;
+                    }
+                } else {
+                    nykyinenAika = 0;
+                }
+
+                aloitettu = true;
+                paivitaNaytto();
+            }
+
+            tila.textContent = "Ajastin käynnissä!";
+            ajastin = setInterval(function() {
+                if (suunta.value === "alas") {
+                    nykyinenAika--;
+
+                    if (nykyinenAika <= 0) {
+                        nykyinenAika = 0;
+                        pysaytaAjastin();
+                        tila.textContent = "Aika loppui! :D";
+                    }
+                } else {
+                    nykyinenAika++;
+                }
+
+                paivitaNaytto();
+            }, 1000);
+        });
+
+        document.getElementById("pysayta").addEventListener("click", function() {
+            if (ajastin !== null) {
+                pysaytaAjastin();
+                tila.textContent = "Ajastin pysäytetty.";
+            }
+        });
+
+        document.getElementById("nollaa").addEventListener("click", nollaaAjastin);
+
+        minuutit.addEventListener("change", function() {
+            if (ajastin === null && suunta.value === "alas") {
+                aloitettu = false;
+                nollaaAjastin();
+            }
+        });
+
+        sekunnit.addEventListener("change", function() {
+            if (ajastin === null && suunta.value === "alas") {
+                aloitettu = false;
+                nollaaAjastin();
+            }
+        });
+
+        paivitaNaytto();
+    </script>
+</body>
+</html>

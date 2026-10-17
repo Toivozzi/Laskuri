@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jouluvibe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="joulu">
+    <a class="takaisin" href="index.html">← Takaisin</a>
+    <main class="joulu-sisalto">
+        <h1>Päiviä jouluun 🎄</h1>
+        <div id="joulu-aika"></div>
+    </main>
+
+    <script>
+        function paivitaJoulu() {
+            const nyt = new Date();
+            let joulu = new Date(nyt.getFullYear(), 11, 25, 0, 0, 0);
+
+            if (nyt >= joulu) {
+                joulu = new Date(nyt.getFullYear() + 1, 11, 25, 0, 0, 0);
+            }
+
+            const erotus = joulu - nyt;
+            const paivat = Math.floor(erotus / 86400000);
+            const tunnit = Math.floor((erotus % 86400000) / 3600000);
+            const minuutit = Math.floor((erotus % 3600000) / 60000);
+            const sekunnit = Math.floor((erotus % 60000) / 1000);
+
+            document.getElementById("joulu-aika").textContent =
+                paivat + " päivää " +
+                tunnit + " tuntia " +
+                minuutit + " minuuttia " +
+                sekunnit + " sekuntia";
+        }
+
+        paivitaJoulu();
+        setInterval(paivitaJoulu, 1000);
+    </script>
+</body>
+</html>
