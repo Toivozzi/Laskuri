@@ -39,8 +39,10 @@ Avaa laskurin nettisivu.
 
 Laskuri toimii myös selaimessa: [Laskuri](https://toivozzi.github.io/laskuri/)
 
-<p align="center">
-  <img src="https://media1.tenor.com/m/1eZJF7qDOIQAAAAd/beatboxing-cat-cat.gif" alt="Beatboxaava kissa" width="400">
-</p>
+<div align="center">
+  <a href="https://tenor.com/view/beatboxing-cat-cat-meme-beat-beatbox-gif-15413087140984338564">
+    <img src="https://media1.tenor.com/m/1eZJF7qDOIQAAAAd/beatboxing-cat-cat.gif" width="400" alt="Beatboxing Cat">
+  </a>
+</div>
 
 ---
