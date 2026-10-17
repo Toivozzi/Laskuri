@@ -51,8 +51,4 @@ Lataa source koodi tai käytä suoraan [Laskuri](https://toivozzi.github.io/lask
 2^8
 (5+3)*2
 ```
-
-## GitHub Pages homma
-
-Laskuri toimii myös selaimessa: [Laskuri](https://toivozzi.github.io/laskuri/)
 ---
