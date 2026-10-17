@@ -1,7 +1,7 @@
 # Laskuri - Laske laskusi nopeasti ja vaivattomasti!
 
 <p align="center">
-  <img src="./meow.gif" width="800" alt="Kissa">
+  <img src="./meow.gif" width="600" alt="Kissa">
 </p>
 Made with ☕ and 🐈
 
