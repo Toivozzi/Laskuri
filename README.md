@@ -3,7 +3,7 @@
 <p align="center">
   <img src="./meow.gif" width="600" alt="Kissa">
 </p>
-Made with ☕ and 🐈
+Made with ☕ and 🐈 :DDDD
 
 <strong>Yksinkertainen laskuri, joka laskee matemaattisia laskuja.<strong/>
 
