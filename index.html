@@ -11,7 +11,7 @@
     <div class="toivo">Toivo xD</div>
 
     <main class="laskuri">
-        <h1>Laskuri 1.2</h1>
+        <h1>Laskuri 1.3.1</h1>
         <form id="lomake">
             <input id="lasku" type="text" placeholder="Esim. 6:7?" autocomplete="off" required>
             <button type="submit">Laske</button>
@@ -97,7 +97,7 @@
                     const b = potenssi();
 
                     if (op === "/" && b === 0) {
-                        throw Error("Nollalla ei voi jakaa");
+                        throw Error("Nollalla ei voi jakaa :DDDD");
                     }
 
                     a = op === "*" ? a * b : a / b;
@@ -121,7 +121,7 @@
             const n = summa();
 
             if (i !== t.length || !Number.isFinite(n)) {
-                throw Error("Virheellinen lasku");
+                throw Error("Virheellinen lasku!!!");
             }
 
             return n;
