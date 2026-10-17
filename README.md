@@ -1,5 +1,7 @@
 # Laskuri
-
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Toivozzi/laskuri/main/kissa.gif" width="400" alt="Beatboxaava kissa">
+</p>
 Laskuri - Laske laskusi nopeasti ja vaivattomasti!  
 **Yksinkertainen laskuri, joka laskee matemaattisia laskuja.**
 
@@ -38,9 +40,4 @@ Avaa laskurin nettisivu.
 ## GitHub Pages homma
 
 Laskuri toimii myös selaimessa: [Laskuri](https://toivozzi.github.io/laskuri/)
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Toivozzi/laskuri/main/kissa.gif" width="400" alt="Beatboxaava kissa">
-</p>
-
 ---
