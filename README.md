@@ -1,6 +1,7 @@
 # Laskuri
 
-Yksinkertainen laskuri, joka laskee matemaattisia laskuja.
+Laskuri - Laske laskusi nopeasti ja vaivattomasti!
+**Yksinkertainen laskuri, joka laskee matemaattisia laskuja.**
 
 ## Ominaisuudet
 
@@ -19,7 +20,7 @@ Yksinkertainen laskuri, joka laskee matemaattisia laskuja.
 3. Paina **Laske**.
 4. Valitse haluamasi desimaalien määrä pyöristystä varten.
 
-Esimerkkejä:
+### Esimerkkejä:
 
 ```text
 5+5
