@@ -1,6 +1,6 @@
 # Laskuri
 
-Laskuri - Laske laskusi nopeasti ja vaivattomasti!
+Laskuri - Laske laskusi nopeasti ja vaivattomasti!  
 **Yksinkertainen laskuri, joka laskee matemaattisia laskuja.**
 
 ## Ominaisuudet
@@ -13,13 +13,16 @@ Laskuri - Laske laskusi nopeasti ja vaivattomasti!
 - Potenssit (`^`)
 - Sulkeet (`()`)
 - Tuloksen pyöristäminen valitulla desimaalien määrällä
+
 ### Ajastin
 - Ajastin alaspäin
 - Alastin ylöspäin
+
 ### Joululaskuri
 - Näet kuinka kauan on vielä jouluun.
 
 ## Käyttö
+
 Avaa laskurin nettisivu.
 
 ### Esimerkkejä laskuista:
@@ -35,4 +38,8 @@ Avaa laskurin nettisivu.
 ## GitHub Pages homma
 
 Laskuri toimii myös selaimessa: [Laskuri](https://toivozzi.github.io/laskuri/)
+
 ---
+<p align="center">
+  <img src="https://media1.tenor.com/m/1eZJF7qDOIQAAAAd/beatboxing-cat-cat.gif" alt="Beatboxaava kissa" width="400">
+</p>
