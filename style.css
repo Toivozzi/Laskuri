@@ -20,7 +20,7 @@ body {
     transform-origin: center;
 }
 
-@keyframes pyori {
+@keyframes rullaa {
     from {
         transform: rotate(0deg);
     }
