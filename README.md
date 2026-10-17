@@ -22,7 +22,7 @@
 ### Joululaskuri
 - Näet kuinka kauan on vielä jouluun.
 
-## Kuinka käytän Laskuria?
+## Kuinka käytän Laskuria???
 Lataa source koodi tai käytä suoraan [Laskuri](https://toivozzi.github.io/laskuri/)
 ```text
 1. Avaa GitHub-repo
