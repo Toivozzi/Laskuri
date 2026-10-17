@@ -22,9 +22,22 @@
 ### Joululaskuri
 - Näet kuinka kauan on vielä jouluun.
 
-## Käyttö
+## Kuinka käytän Laskuria?
+Lataa source koodi tai käytä suoraan [Laskuri](https://toivozzi.github.io/laskuri/)
+```text
+1. Avaa GitHub-repo
+   https://github.com/Toivozzi/laskuri
 
-Avaa laskurin nettisivu.
+2. Paina Code -> Download ZIP
+
+3. Pura ladattu ZIP-tiedosto kansioon
+
+4. Avaa purettu kansio
+
+5. Etsi index.html
+
+6. Tuplaklikkaa index.html-tiedostoa
+```
 
 ### Esimerkkejä laskuista:
 
