@@ -5,6 +5,7 @@ Laskuri - Laske laskusi nopeasti ja vaivattomasti!
 
 ## Ominaisuudet
 
+### LASKURI
 - Yhteenlasku (`+`)
 - Vähennyslasku (`-`)
 - Kertolasku (`*`)
@@ -12,15 +13,16 @@ Laskuri - Laske laskusi nopeasti ja vaivattomasti!
 - Potenssit (`^`)
 - Sulkeet (`()`)
 - Tuloksen pyöristäminen valitulla desimaalien määrällä
+### Ajastin
+- Ajastin alaspäin
+- Alastin ylöspäin
+### Joululaskuri
+- Näet kuinka kauan on vielä jouluun.
 
 ## Käyttö
+Avaa laskurin nettisivu.
 
-1. Avaa laskurin nettisivu.
-2. Kirjoita lasku kenttään.
-3. Paina **Laske**.
-4. Valitse haluamasi desimaalien määrä pyöristystä varten.
-
-### Esimerkkejä:
+### Esimerkkejä laskuista:
 
 ```text
 5+5
