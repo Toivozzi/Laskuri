@@ -6,6 +6,7 @@
 Made with ☕ and 🐈 :DDDD
 
 <strong>Yksinkertainen laskuri, joka laskee matemaattisia laskuja.<strong/>
+Ja hassun hauska projektin palanen + Kissat
 
 ## Ominaisuudet
 
